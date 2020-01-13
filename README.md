@@ -11,6 +11,9 @@ Tested with Python versions: 2.7.14 and 3.7.4
 
 pylint:
 Run pylint with flag --extension-pkg-whitelist=cv2
+
+## Preview
+![Preview](/images/fun_with_python_opencv.gif)
     
 ## Normal
 
