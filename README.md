@@ -17,10 +17,11 @@ Run pylint with flag --extension-pkg-whitelist=cv2
 
 ![Threshold Screenshot](/images/threshold.png)
 
+## Selection
+
+![Selection Screenshot](/images/select.png) 
+
 ## Intro
 
 ![Intro Screenshot](/images/intro.png)
 
-## Selection
-
-![Selection Screenshot](/images/select.png)
