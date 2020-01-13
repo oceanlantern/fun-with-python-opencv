@@ -25,12 +25,10 @@ WIN_WIDTH = 512
 WIN_HEIGHT = 512
 LINE_THICKNESS = 2
 
-
 def zero_image():
     """zero_image
     """
     return np.zeros((512, 512, 3), np.uint8)
-
 
 class RectInfo:
     """RectInfo
@@ -93,7 +91,6 @@ img_main = zero_image()
 first_button_down = False
 draw_with_effect = False
 
-
 def draw_rect(event, x, y, flags, param):
     #  Disable Using the global statement (global-statement)
     # pylint: disable=W0603
@@ -138,7 +135,7 @@ def draw_rect(event, x, y, flags, param):
             cv2.rectangle(img_main, (rcinfo.offset_x, rcinfo.offset_y), (rcinfo.get_right(
             ), rcinfo.get_bottom()), (0, 0, 0), thickness=LINE_THICKNESS)
 
-            img_lena = cv2.imread('lena.png')
+            img_lena = cv2.imread('images\lena.png')
             img_lena = cv2.resize(
                 img_lena, (abs(rcinfo.get_width()), abs(rcinfo.get_height())), None, 0, 0)
             #img_lena = cv2.cvtColor(img_lena, cv2.COLOR_BGR2RGB)
@@ -167,6 +164,7 @@ def draw_rect(event, x, y, flags, param):
             draw_with_effect = not draw_with_effect
 
             try:
+                # Copy processed lena image to main image using array slicing
                 img_main[y:y+height, x:x+width] = img_lena
             except Exception as exc:
                 # print(
@@ -179,7 +177,6 @@ def draw_rect(event, x, y, flags, param):
 
     elif event == cv2.EVENT_RBUTTONDOWN:
         cv2.circle(img_main, (x, y), 100, (255, 0, 0), thickness=-1)
-
 
 def main():
     #  Disable Using the global statement (global-statement)
@@ -196,7 +193,6 @@ def main():
     cv2.setMouseCallback(FUN_WITH_PYTHON_CV, draw_rect)
 
     seed(1)
-
     time_check = datetime.datetime.now()
     pos = (50, 256)
     img_text = zero_image()
@@ -204,7 +200,7 @@ def main():
 
     while cv2.getWindowProperty(FUN_WITH_PYTHON_CV, 0) >= 0:
 
-         # Every second switch between showing Title and Instructions
+         # Every second switch between showing title and instructions
          # until left button pressed
 
         if first_button_down:
@@ -229,10 +225,9 @@ def main():
                     (255, 0, 0), 2, cv2.LINE_AA, False)
             cv2.imshow(FUN_WITH_PYTHON_CV, img_text)
 
-        # in addition to close button monitor for esc key to exit
+        # in addition to Close button monitor for esc key to exit
         if cv2.waitKey(20) & 0xff == 27:
             break
-
 
 if __name__ == '__main__':
     main()
